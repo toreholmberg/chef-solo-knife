@@ -1,0 +1,47 @@
+{
+  "custom": {
+    "hostname": "example"
+  },
+  "nginx": {
+    "init_style": "init",
+    "default_site_enabled": "true",
+    "source": {
+      "modules": ["http_gzip_static_module", "http_ssl_module"]
+    }
+  },
+  "mysql": {
+    "server_root_password": "password",
+    "server_debian_password": "password",
+    "server_repl_password": "password",
+    "remove_anonymous_users": "true",
+    "bind_address": "127.0.0.1"
+  },
+  "openssh": {
+    "server": {
+      "permit_root_login": "no",
+      "password_authentication": "no",
+      "allow_agent_forwarding": "yes"
+    }
+  },
+  "authorization": {
+    "sudo": {
+      "passwordless": "true"
+    }
+  },
+  "run_list": [
+    "recipe[apt]",
+    "recipe[build-essential]",
+    "recipe[git]",
+    "recipe[php]",
+    "recipe[php-fpm]",
+    "recipe[nginx::source]",
+    "recipe[mysql::server]",
+    "recipe[openssh]",
+    "recipe[firewall]",
+    "recipe[chef-solo-search]",
+    "recipe[users::sysadmins]",
+    "recipe[sudo]",
+    "recipe[fail2ban]",
+    "recipe[custom]"
+  ]
+}

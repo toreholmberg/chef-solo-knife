@@ -1,0 +1,9 @@
+{
+  "id": "example",
+  "ssh_keys": [
+    "ssh-rsa EXAMPLE user@email.com",
+    ],
+  "groups": ["sudo", "sysadmin"],
+  "shell": "\/bin\/bash",
+  "comment": "Example user"
+}
